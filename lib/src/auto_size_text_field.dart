@@ -385,6 +385,9 @@ class AutoSizeTextField extends StatefulWidget {
   /// {@endtemplate}
   final GestureTapCallback? onTap;
 
+  /// Called for each tap that occurs outside of the[TextFieldTapRegion] group when the text field is focused.
+  final void Function(PointerDownEvent)? onTapOutside;
+
   /// Callback that generates a custom [InputDecorator.counter] widget.
   ///
   /// See [InputCounterWidgetBuilder] for an explanation of the passed in
@@ -484,6 +487,7 @@ class AutoSizeTextField extends StatefulWidget {
     this.dragStartBehavior = DragStartBehavior.start,
     this.enableInteractiveSelection = true,
     this.onTap,
+    this.onTapOutside,
     this.buildCounter,
     this.scrollPhysics,
     this.scrollController,
@@ -598,6 +602,7 @@ class _AutoSizeTextFieldState extends State<AutoSizeTextField> {
         onEditingComplete: widget.onEditingComplete,
         onSubmitted: widget.onSubmitted,
         onTap: widget.onTap,
+        onTapOutside: widget.onTapOutside,
         readOnly: widget.readOnly,
         scrollController: widget.scrollController,
         scrollPadding: widget.scrollPadding,
